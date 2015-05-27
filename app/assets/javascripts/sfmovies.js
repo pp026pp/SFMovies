@@ -4,7 +4,10 @@ window.Sfmovies = {
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
+    this.searchView = new Sfmovies.Views.SearchboxView();
+    this.searchView.render();
+    this.mapView = new Sfmovies.Views.MapView();
+    this.mapView.render();
   }
 };
 

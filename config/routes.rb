@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'main#index'
+
   namespace :api do
     namespace :v1, defaults: {format: 'json'} do
       get 'movies/autocomplete/:query', to: 'movies#autocomplete'

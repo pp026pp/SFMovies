@@ -1,0 +1,34 @@
+<ul class="list-group">
+  <% if @movie.get('title'): %>
+    <li class="list-group-item"> <strong>Title:</strong> <%= @movie.get('title') %> </li>
+  <% end %>
+  
+  <% if @movie.get('release_year'): %>
+    <li class="list-group-item"> <strong>Release Year:</strong> <%= @movie.get('release_year').getFullYear() %> </li>
+  <% end %>
+
+  <% if @movie.get('fun_fact'): %>
+    <li class="list-group-item"> <strong>Fun Facts:</strong> <%= @movie.get('fun_fact') %> </li>
+  <% end %>
+  
+  <% if @movie.get('production_company'): %>
+    <li class="list-group-item"> <strong>Production Company:</strong> <%= @movie.get('production_company') %> </li>
+  <% end %>
+
+  <% if @movie.get('distributor'): %>
+    <li class="list-group-item"> <strong>Distributor:</strong> <%= @movie.get('distributor') %> </li>
+  <% end %>
+
+  <% if @movie.get('director'): %>
+    <li class="list-group-item"> <strong>Director:</strong> <%= @movie.get('director') %> </li>
+  <% end %>
+  
+  <% if @movie.get('writer'): %>
+    <li class="list-group-item"> <strong>Writer:</strong> <%= @movie.get('writer') %> </li>
+  <% end %>
+  
+  <% if [@movie.get('actor1'), @movie.get('actor2'), @movie.get('actor3')].length: %>
+    <li class="list-group-item"> <strong>Actors:</strong> <%= [@movie.get('actor1'), @movie.get('actor2'), @movie.get('actor3')].join(', ') %> </li>
+  <% end %>
+
+</ul>
