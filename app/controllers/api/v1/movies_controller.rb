@@ -5,7 +5,7 @@ class Api::V1::MoviesController < ApplicationController
   end
 
   def search
-    @movie = Movie.find_by(title: params[:title])
+    @movie = Movie.find_by_title params[:title]
     $movie_names_trie.update_frequency @movie.title, 1
   end
 end
