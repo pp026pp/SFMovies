@@ -3,10 +3,11 @@ class Movie < ActiveRecord::Base
   has_many :locations, through: :filmed_ats
   accepts_nested_attributes_for :locations
 
-  @@redis = Redis::Namespace.new("sf_movies:movies", :redis => Redis.new)
-
   def self.redis
-    @@redis
+    @@redis ||= Redis::Namespace.new(
+      "sf_movies:movies",
+      :redis => Redis.new(url: URI.parse(ENV["REDISTOGO_URL"]))
+    )
   end
 
   def self.find_by_title title

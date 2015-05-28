@@ -22,8 +22,9 @@ class PrefixTrie
   def initialize(all_strings)
     @uuid = SecureRandom.base64
     @root_node = Node.new
-    @redis_publish = Redis::Namespace.new("sf_movies:prefixtrie", :redis => Redis.new)
-    @redis_subscribe = Redis::Namespace.new("sf_movies:prefixtrie", :redis => Redis.new)
+    redis_uri = URI.parse(ENV["REDISTOGO_URL"])
+    @redis_publish = Redis::Namespace.new("sf_movies:prefixtrie", :redis => Redis.new(url: redis_uri))
+    @redis_subscribe = Redis::Namespace.new("sf_movies:prefixtrie", :redis => Redis.new(url: redis_uri))
     subsribe_redis_to_change
     #@rwlock = ReadWriteLock.new
     @lock = Mutex.new
