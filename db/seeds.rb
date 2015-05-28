@@ -14,7 +14,8 @@ movies_set = Set.new
 locations_set = Set.new
 
 raw_table.each do |row|
-  if movies_set.include? row[:title].to_s
+  row[:title] = row[:title].to_s.strip
+  if movies_set.include? row[:title]
     movie = Movie.find_by(title: row[:title])
   else
     movie = Movie.new

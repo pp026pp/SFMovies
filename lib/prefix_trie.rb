@@ -26,7 +26,6 @@ class PrefixTrie
     @redis_publish = Redis::Namespace.new("sf_movies:prefixtrie", :redis => Redis.new(url: redis_uri))
     @redis_subscribe = Redis::Namespace.new("sf_movies:prefixtrie", :redis => Redis.new(url: redis_uri))
     subsribe_redis_to_change
-    #@rwlock = ReadWriteLock.new
     @lock = Mutex.new
 
     @lock.synchronize do
