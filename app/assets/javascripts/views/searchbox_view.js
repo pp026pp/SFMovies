@@ -17,14 +17,13 @@ Sfmovies.Views.SearchboxView = Backbone.View.extend({
           return temp;
         }
       },
-      limit: 10,
     });
   },
   render: function() {
     this.engine.initialize();
 
     this.$el.typeahead(null, {
-      limit: 10,
+      limit: 25,
       cache: false,
       source: this.engine.ttAdapter()
     });

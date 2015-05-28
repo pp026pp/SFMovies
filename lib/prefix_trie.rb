@@ -1,3 +1,5 @@
+require 'concurrent/atomics'
+
 class PrefixTrie
   attr_reader :root_node
 
@@ -7,7 +9,7 @@ class PrefixTrie
     attr_accessor :top_searches_below
     attr_accessor :frequency
 
-    TOP_SEARCHS = 100
+    TOP_SEARCHS = 15
 
     def initialize()
       @children = {}
@@ -19,30 +21,40 @@ class PrefixTrie
 
   def initialize(all_strings)
     @root_node = Node.new
-    all_strings.each do |string|
-      insert string
+    @rwlock = Concurrent::ReadWriteLock.new
+
+    @rwlock.with_write_lock do
+      all_strings.each do |string|
+        insert string
+      end
+      build_top_searches @root_node
     end
-    build_top_searches @root_node
   end
 
   def is_word(string)
-    node = find_node string
-    return false if !node
-    node.word
+    @rwlock.with_read_lock do
+      node = find_node string
+      return false if !node
+      node.word
+    end
   end
 
   def top_searches(string)
-    node = find_node string
-    return [] if !node
-    strings = []
-    node.top_searches_below.each do |child|
-      strings << child.word
+    @rwlock.with_read_lock do
+      node = find_node string
+      return [] if !node
+      words = []
+      node.top_searches_below.each do |child|
+        words << child.word
+      end
+      words
     end
-    strings
   end
 
   def update_frequency(string, plus_frequency)
-    update_frequency_helper(string, 0, @root_node, plus_frequency)
+    @rwlock.with_write_lock do
+      update_frequency_helper(string, 0, @root_node, plus_frequency)
+    end
   end
 
 private 

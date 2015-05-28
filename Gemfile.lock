@@ -1,3 +1,10 @@
+GIT
+  remote: git@github.com:ruby-concurrency/concurrent-ruby.git
+  revision: d82334d0628c286935815d8aa11701820a42244c
+  branch: master
+  specs:
+    concurrent-ruby (0.9.0.pre1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -165,6 +172,7 @@ DEPENDENCIES
   backbone-on-rails
   byebug
   coffee-rails (~> 4.1.0)
+  concurrent-ruby!
   jbuilder (~> 2.0)
   jquery-rails
   pg
