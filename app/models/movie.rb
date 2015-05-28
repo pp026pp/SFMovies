@@ -1,8 +1,9 @@
 class Movie < ActiveRecord::Base
   has_many :filmed_ats
   has_many :locations, through: :filmed_ats
+  accepts_nested_attributes_for :locations
 
-  @@redis = Redis::Namespace.new("sf_movies:movie", :redis => Redis.new)
+  @@redis = Redis::Namespace.new("sf_movies:movies", :redis => Redis.new)
 
   def self.redis
     @@redis
@@ -12,10 +13,21 @@ class Movie < ActiveRecord::Base
     movie_json = redis.get "#{title}"
     if movie_json.nil?
       movie = Movie.find_by title: title
-      $redis.set "#{movie.title}", movie.to_json
+      movie_json = movie.to_json(methods: :locations_attributes)
+      redis.set "#{movie.title}", movie_json
+      redis.expire "#{movie.title}", 1.day.seconds
     else
-      movie = Movie.new(JSON.load movie_json)
+      movie = Movie.new
+      movie.from_json(movie_json)
     end
     movie
+  end
+
+  def locations_attributes
+    locations = self.locations
+    locations.each do |location|
+      location.id = nil
+    end
+    locations
   end
 end

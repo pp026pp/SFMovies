@@ -1,10 +1,3 @@
-GIT
-  remote: git@github.com:ruby-concurrency/concurrent-ruby.git
-  revision: d82334d0628c286935815d8aa11701820a42244c
-  branch: master
-  specs:
-    concurrent-ruby (0.9.0.pre1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -44,6 +37,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.0)
+    atomic (1.1.99)
     backbone-on-rails (1.1.2.1)
       eco
       ejs
@@ -94,6 +88,8 @@ GEM
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     pg (0.18.2)
+    puma (2.11.3)
+      rack (>= 1.1, < 2.0)
     rabl (0.11.6)
       activesupport (>= 2.3.14)
     rack (1.6.1)
@@ -180,13 +176,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  atomic
   backbone-on-rails
   byebug
   coffee-rails (~> 4.1.0)
-  concurrent-ruby!
   jbuilder (~> 2.0)
   jquery-rails
   pg
+  puma
   rabl
   rails (= 4.2.1)
   rails_12factor

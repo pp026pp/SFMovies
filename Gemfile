@@ -34,7 +34,9 @@ gem 'rabl'
 gem 'redis'
 gem 'redis-namespace'
 
-gem 'concurrent-ruby', git: 'git@github.com:ruby-concurrency/concurrent-ruby.git', branch: 'master'
+gem 'atomic'
+
+gem 'puma'
 
 gem 'rails_12factor'
 
