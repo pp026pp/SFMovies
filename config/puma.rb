@@ -1,4 +1,4 @@
-workers Integer(ENV['WEB_CONCURRENCY'] || 2)
+workers Integer(ENV['WEB_CONCURRENCY'] || 1)
 max_threads_count = Integer(ENV['MAX_THREADS'] || 25)
 min_threads_count = Integer(ENV['MIN_THREADS'] || 10)
 threads min_threads_count, max_threads_count
