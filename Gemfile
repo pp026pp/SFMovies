@@ -41,6 +41,8 @@ gem 'rabl'
 gem 'redis'
 gem 'redis-namespace'
 
+gem 'unicorn'
+
 gem 'concurrent-ruby', git: 'git@github.com:ruby-concurrency/concurrent-ruby.git', branch: 'master'
 
 group :development, :test do
