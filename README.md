@@ -63,6 +63,7 @@ All models located at **app/models**.
    search box, the server will look up the movie with that title and
    update the frequency and corresponding Trie Nodes with updated "top N
    searches".
+ - To give an example of the ranked typeahead list: If the users search "A View to a Kill" more frequently than other suggestions, they will see it goes to the top of the suggestion list. To test this yourselves, you can search for a movie multiple times and you will be able to see it goes up the list.
  - I need to make sure the trie is thread safe because we have both read
    and write operations on it. Right now I'm using a simple mutex for
    the purpose instead of a read-write-lock because there's no standard
@@ -73,6 +74,7 @@ All models located at **app/models**.
    message using Redis whenever one of the Trie instance updates. Other
    instances will receive the Redis message and update the trie
    accordingly.
+
 
 ###Routes
  - File: **config/routes.rb**
