@@ -29,6 +29,8 @@ gem 'backbone-on-rails'
 
 gem 'twitter-bootstrap-rails'
 
+gem 'twitter-typeahead-rails'
+
 gem 'rabl'
 
 gem 'redis'

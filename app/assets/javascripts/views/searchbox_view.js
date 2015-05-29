@@ -9,22 +9,17 @@ Sfmovies.Views.SearchboxView = Backbone.View.extend({
         wildcard: '%QUERY',
         cache: false,
         rateLimitWait: 50,
-        transform: function(response) {
-          var temp = [];
-          response.forEach(function(res){
-            temp.push(res.movie.title);
-          });
-          return temp;
-        }
       },
+      limit: 10,
     });
   },
   render: function() {
     this.engine.initialize();
 
     this.$el.typeahead(null, {
-      limit: 25,
-      cache: false,
+      display: function(res) {
+        return res.movie.title;
+      },
       source: this.engine.ttAdapter()
     });
   },
