@@ -92,8 +92,8 @@ All models located at **app/models**.
 - This controller serves the root path of the path, the corresponding html is **app/views/main/index.html.erb**. Detailed explanation will be listed in front end section.
 
 ###Server config
- - **config/puma.rb** (The one used the Procfile)
- - **config/unicorn.rb** (Server not used but tried)
+ - **config/puma.rb** (Currently used the Procfile) For this app, the server will spawn one worker process with 10-25 threads.
+ - **config/unicorn.rb** (Not used but tried)
 
 
 ----------
