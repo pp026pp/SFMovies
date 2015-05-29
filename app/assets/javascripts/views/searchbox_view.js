@@ -47,6 +47,7 @@ Sfmovies.Views.SearchboxView = Backbone.View.extend({
       error: function(movie, res) {
         that.$el.addClass('search-error');
         that.alertElement.html('Movie not found').show();
+        $('#movie-info').html('');
         setTimeout(function() {
           that.$el.removeClass('search-error');
           that.alertElement.html('').hide();
