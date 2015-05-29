@@ -20,6 +20,13 @@ body {
   width: 200px;
 }
 
+.input-alert {
+  display: block;
+  padding: 5px;
+  margin: 5px 50px 5px 0px;
+  width: 350px;
+}
+
 .typeahead,
 .tt-query,
 .tt-hint {
@@ -42,6 +49,14 @@ body {
 
 .typeahead:focus {
   border: 2px solid #0097cf;
+}
+
+.search-error {
+  border-color: #CC0000;
+}
+
+.search-error:focus {
+  border-color: #CC0000;
 }
 
 .tt-query {

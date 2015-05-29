@@ -14,6 +14,7 @@ class Movie < ActiveRecord::Base
     movie_json = redis.get "#{title}"
     if movie_json.nil?
       movie = Movie.find_by title: title
+      return nil unless movie
       movie_json = movie.to_json(methods: :locations_attributes)
       redis.set "#{movie.title}", movie_json
       redis.expire "#{movie.title}", 1.day.seconds

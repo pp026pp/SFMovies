@@ -27,8 +27,18 @@
     <li class="list-group-item"> <strong>Writer:</strong> <%= @movie.get('writer') %> </li>
   <% end %>
   
-  <% if [@movie.get('actor1'), @movie.get('actor2'), @movie.get('actor3')].length: %>
-    <li class="list-group-item"> <strong>Actors:</strong> <%= [@movie.get('actor1'), @movie.get('actor2'), @movie.get('actor3')].join(', ') %> </li>
+  <% actors = []; %>
+  <% if @movie.get('actor1'): %>
+    <% actors.push(@movie.get('actor1')) %>
+  <% end %>
+  <% if @movie.get('actor2'): %>
+    <% actors.push(@movie.get('actor2')) %>
+  <% end %>
+  <% if @movie.get('actor3'): %>
+    <% actors.push(@movie.get('actor3')) %>
+  <% end %>
+  <% if actors.length: %>
+    <li class="list-group-item"> <strong>Actors:</strong> <%= actors.join(', ') %> </li>
   <% end %>
 
 </ul>
