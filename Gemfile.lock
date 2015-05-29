@@ -37,7 +37,6 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.0)
-    atomic (1.1.99)
     backbone-on-rails (1.1.2.1)
       eco
       ejs
@@ -180,25 +179,24 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  atomic
-  backbone-on-rails
-  byebug
+  backbone-on-rails (= 1.1.2.1)
+  byebug (= 5.0.0)
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
-  jquery-rails
-  pg
-  puma
-  rabl
+  jquery-rails (= 4.0.3)
+  pg (= 0.18.2)
+  puma (= 2.11.3)
+  rabl (= 0.11.6)
   rails (= 4.2.1)
-  rails_12factor
-  redis
-  redis-namespace
+  rails_12factor (= 0.0.3)
+  redis (= 3.2.1)
+  redis-namespace (= 1.5.2)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
-  spring
-  turbolinks
-  twitter-bootstrap-rails
-  twitter-typeahead-rails
+  spring (= 1.3.6)
+  turbolinks (= 2.5.3)
+  twitter-bootstrap-rails (= 3.2.0)
+  twitter-typeahead-rails (= 0.10.5)
   uglifier (>= 1.3.0)
-  unicorn
+  unicorn (= 4.9.0)
   web-console (~> 2.0)
